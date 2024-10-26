@@ -1,8 +1,8 @@
 ---
-title: "Data Representation - Floating Point Numbers"
-subtitle: "「数据表示」浮点数"
+title: 'Data Representation - Floating Point Numbers'
+subtitle: '「数据表示」浮点数'
 layout: post
-author: "Hux"
+author: 'Hux'
 header-style: text
 hidden: true
 tags:
@@ -23,9 +23,7 @@ between _ranges_ and _precision_.
 Due to its computational complexities, CPU also have a dedicated set of
 instructions to accelerate on floating-point arithmetics.
 
-
-Terminologies
--------------
+## Terminologies
 
 The terminologies of floating-point number is coming from the
 [_scientific notation_](https://en.wikipedia.org/wiki/Scientific_notation),
@@ -51,9 +49,7 @@ Now it becomes clear that, to represent a floating-point number in computers,
 we will simply assign some bits for _significand_ and some for _exponent_, and
 potentially a bit for _sign_ and that's it.
 
-
-IEEE-754 32-bits Single-Precision Floats 单精度浮点数
-----------------------------------------
+## IEEE-754 32-bits Single-Precision Floats 单精度浮点数
 
 - <https://en.wikipedia.org/wiki/Single-precision_floating-point_format>
 
@@ -69,14 +65,14 @@ sign   exponent             fraction
 ```
 
 - The _sign_ part took 1 bit to indicate the sign of the floats. (`0` for `+`
-and `1` for `-`. This is the same treatment as the [sign magnitute](2020-06-19-data-rep-int.md##sign-magnitude-原码).
+  and `1` for `-`. This is the same treatment as the [sign magnitute](2020-06-19-data-rep-int.md##sign-magnitude-原码).
 - The _exponent_ part took 8 bits and used [_offset-binary (biased) form_](2020-06-19-data-rep-int.md#offset-binary-移码) to represent a signed integer.
-It's a variant form since it took out the `-127` (all 0s) for zero and `+128`
-(all 1s) for non-numbers, thus it ranges only `[-126, 127]` instead of
-`[-127, 128]`. Then, it choose the zero offset of `127` in these 254 bits (like
-using `128` in _excess-128_), a.k.a the _exponent bias_ in the standard.
+  It's a variant form since it took out the `-127` (all 0s) for zero and `+128`
+  (all 1s) for non-numbers, thus it ranges only `[-126, 127]` instead of
+  `[-127, 128]`. Then, it choose the zero offset of `127` in these 254 bits (like
+  using `128` in _excess-128_), a.k.a the _exponent bias_ in the standard.
 - The _fraction_ part took 23 bits with an _implicit leading bit_ `1` and
-represent the actual _significand_ in total precision of 24-bits.
+  represent the actual _significand_ in total precision of 24-bits.
 
 Don't be confused by why it's called _fraction_ instead of _significand_!
 It's all because that the 23 bits in the representation is indeed, representing
@@ -102,9 +98,7 @@ Recall that the `E = 0b0111 1111 = 0` because it used a biased representation!
 
 We will add more non-trivial examples later.
 
-
-Demoing Floats in C/C++
------------------------
+## Demoing Floats in C/C++
 
 Writing sample code converting between binaries (in hex) and floats are not
 as straightforward as it for integers. Luckily, there are still some hacks to
@@ -184,13 +178,11 @@ int main() {
 }
 ```
 
-
-Representation of Non-Numbers
------------------------------
+## Representation of Non-Numbers
 
 There are more in the IEEE-754!
 
-Real numbers doesn't satisfy [closure property](https://en.wikipedia.org/wiki/Closure_(mathematics))
+Real numbers doesn't satisfy [closure property](<https://en.wikipedia.org/wiki/Closure_(mathematics)>)
 as integers does. Notably, the set of real numbers is NOT closed under the
 division! It could produce non-number results such as **infinity** (e.g. `1/0`)
 and [**NaN (Not-a-Number)**](https://en.wikipedia.org/wiki/NaN) (e.g. taking
@@ -255,7 +247,6 @@ instead of the sign bit for NaN quiteness/signalness:
 
 I guess it might be something related to the CPU pipeline? I don't know yet.
 
-
 ### Equality of NaNs and Zeros.
 
 The spec defined a comparison with NaNs to return an **unordered result**, that
@@ -266,17 +257,17 @@ No surprised that most (if not every) language implemented such behaviours, e.g.
 in JavaScript:
 
 ```js
-NaN !== NaN   // true
-NaN === NaN   // false
-NaN >  1      // false
-NaN <  1      // false
+NaN !== NaN // true
+NaN === NaN // false
+NaN > 1 // false
+NaN < 1 // false
 ```
 
 Position and negative zeros, however, are defined to be equal!
 
 ```js
-+0 === -0  // true, using the traditional JS equality
-Object.is(+0, -0)  // false, using the "SameValue" equality
+;+0 === -0 // true, using the traditional JS equality
+Object.is(+0, -0) // false, using the "SameValue" equality
 ```
 
 In Cpp, we can tell them apart by looking at its sign bit:
@@ -289,11 +280,7 @@ cout << std::signbit(-0.0f);  // 1
 cout << std::signbit(+0.0f);  // 0
 ```
 
-
-
-
-IEEE-754 64-bits Double-Precision Floats
-----------------------------------------
+## IEEE-754 64-bits Double-Precision Floats
 
 - <https://en.wikipedia.org/wiki/Double-precision_floating-point_format>
 
@@ -308,9 +295,7 @@ sign   exponent             fraction
  63   62 .... 52    51 ....................... 0
 ```
 
-
-IEEE-754-2008 16-bits Short Floats
-----------------------------------------
+## IEEE-754-2008 16-bits Short Floats
 
 The 2008 edition of IEEE-754 also standardize the `short float`, which is
 neither in C or C++ standard. Though compiler extension might include it.
@@ -322,10 +307,7 @@ It looks like:
 S            E E E E E         M M M M M M M M M M
 ```
 
-
-
-References
-----------
+## References
 
 - <https://en.wikipedia.org/wiki/Floating-point_arithmetic>
 - <https://www3.ntu.edu.sg/home/ehchua/programming/java/datarepresentation.html>
