@@ -1,10 +1,10 @@
 # Site settings
-title: Charlie Blog
-SEOTitle: 家琦的博客 | Charlie Blog
+title: Jacky Blog
+SEOTitle: 家琦的博客 | Jacky Blog
 header-img: img/home-bg.jpg
 email: wjqlovehisfamily@gmail.com
-description: '这里是 @Hux黄玄 的个人博客, Hello World | 要做一个有 swag 的程序员'
-keyword: 'Charlie的博客, Charlie Blog, Jacky Ishmael, 博客, 个人网站, 互联网, Web, JavaScript, React, React Native, 前端, 设计'
+description: '这里是 Jacky 的个人博客, Hello World | 强化我与知识的连接，保持惯性'
+keyword: 'Jacky的博客, Jacky Blog, Jacky Ishmael, 博客, 个人网站, 互联网, Web, JavaScript, React, React Native, 前端, 设计'
 url: 'https://jackyishmael.github.io/' # your host, for absolute URL
 baseurl: '' # for example, '/blog' if your blog hosted on 'host/blog'
 
