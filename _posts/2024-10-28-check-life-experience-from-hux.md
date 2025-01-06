@@ -1,7 +1,7 @@
 ---
 layout: post
-title: 'Hello 2024'
-subtitle: 'Hello World, Hello Blog'
+title: 'Read from Hux黄玄的工作感悟'
+subtitle: 'usual placeholder'
 date: 2024-10-27 19:19:00
 author: 'Jacky'
 header-img: 'img/amiya.png'
@@ -20,6 +20,6 @@ tags:
 
 > 我去年非常荣幸有接受 Gitee 的一个封面人物的采访，其中有一个问题是：“你今后有怎么样的规划”，然而我其实并不是一个在大方向上有规划的人
 
-你要有跟从自己内心和直觉的勇气
+总之，你要有跟从自己内心和直觉的勇气
 
 —— Charlie 记于 上海 | 2024.10
